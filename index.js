@@ -71,7 +71,7 @@ app.use("/user" , UserRoutes)
 
 
 mongoose.connect(
-   process.env.MONGODB_URL  ,
+  "mongodb+srv://asrazareen:asra1999@cluster1.ydw3gfw.mongodb.net/theme"  ,
    
 ).then(() => console.log("connected to db"))
 
