@@ -51,20 +51,7 @@ const data = await theme.find()
     ); 
   });
 
-app.post("/profile" , async (req,res) => {
-  console.log(req.body)
-  const {image} = req.body
-  await profile.create({
-    image:image
-  })
-})
- app.get("/profile" , async(req,res) => {
-  const image = await profile.find();
-  //console.log(image)
-  res.json({
-    image:image
-  })
- })
+
  
 app.use("/createForm" , Questions)
 app.use("/user" , UserRoutes)

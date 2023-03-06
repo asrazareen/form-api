@@ -21,6 +21,24 @@ app.get("/" , async(req,res) => {
        
     })
 })
+
+app.post("/profile" , async (req,res) => {
+    console.log(req.body)
+    const {image} = req.body
+    const user = req.user
+    await profile.create({
+      image:image,
+      user
+    })
+  })
+   app.get("/profile" , async(req,res) => {
+    const image = await profile.find({user:req.user});
+    //console.log(image)
+    res.json({ 
+      image:image
+    })
+   })
+
 app.get("/list" , async(req,res) => {
 
     const userId = req.user;
