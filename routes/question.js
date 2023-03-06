@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const Question = require("../models/question")
 const User = require('../models/user')
+const profile = require("../models/profile")
 const fileUpload = require("express-fileupload")
 const survey = require("../models/survey")
 // const fileupload = require("express-fileupload"); 
@@ -23,7 +24,7 @@ app.get("/" , async(req,res) => {
 })
 
 app.post("/profile" , async (req,res) => {
-    console.log(req.body)
+   
     const {image} = req.body
     const user = req.user
     await profile.create({
@@ -32,8 +33,8 @@ app.post("/profile" , async (req,res) => {
     })
   })
    app.get("/profile" , async(req,res) => {
-    const image = await profile.find({user:req.user});
-    //console.log(image)
+    const image = await profile.find({user:req.user}).sort({_id:-1});
+  
     res.json({ 
       image:image
     })

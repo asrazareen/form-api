@@ -18,6 +18,7 @@ app.use(cors())
 
 app.use("/createForm", (req, res, next) => {
   const token = req.headers.authorization;
+
   if(token){
     
       jwt.verify(token, secret, function(err, decoded) {
@@ -29,6 +30,7 @@ app.use("/createForm", (req, res, next) => {
               });
           }
           req.user = decoded.data;
+        
           next();
         });
 
